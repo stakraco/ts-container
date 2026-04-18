@@ -221,13 +221,32 @@ jobs:
           # --- Extract changelog section for this version ---
           NOTES=$(awk "/^## ${VERSION}|^## \[${VERSION}\]/{found=1; next} found && /^## /{exit} found{print}" CHANGELOG.md \
             | sed '/^[[:space:]]*$/d' \
-            | head -20)
+            | head -25)
 
           if [ -z "$NOTES" ]; then
             NOTES="No changelog entry found for ${VERSION}."
           fi
 
-          # Escape for JSON (newlines → \n, quotes → \")
+          # --- Convert GitHub-flavored markdown → Slack mrkdwn ---
+          # ### Headers → *Bold headers*
+          NOTES=$(echo "$NOTES" | sed -E 's/^###+ (.+)/*\1*/')
+          # **bold** → *bold*  (Slack uses single asterisks)
+          NOTES=$(echo "$NOTES" | sed -E 's/\*\*([^*]+)\*\*/\*\1\*/g')
+          # `code` stays as-is (Slack supports backtick code)
+          # - list items → • list items
+          NOTES=$(echo "$NOTES" | sed -E 's/^- /• /')
+          # Remove leading/trailing whitespace on lines
+          NOTES=$(echo "$NOTES" | sed -E 's/^[[:space:]]+//')
+          # Collapse continuation lines (lines starting with text after a bullet)
+          NOTES=$(echo "$NOTES" | awk '
+            /^• / { if (NR>1) printf "\n"; printf "%s", $0; next }
+            /^\*/ { if (NR>1) printf "\n"; printf "%s", $0; next }
+            /^---/ { next }
+            { printf " %s", $0 }
+            END { printf "\n" }
+          ')
+
+          # Escape for JSON (quotes → \", then join lines with \n)
           NOTES_ESCAPED=$(echo "$NOTES" | sed 's/"/\\"/g' | awk '{printf "%s\\n", $0}' | sed 's/\\n$//')
 
           # --- Previous tag for compare link ---
@@ -276,6 +295,11 @@ jobs:
             {
               "text": "✅ @stackra/ts-container ${{ needs.validate.outputs.tag }} published to npm",
               "blocks": [
+                {
+                  "type": "image",
+                  "image_url": "https://raw.githubusercontent.com/stackra-co/ts-container/main/.github/assets/banner.png",
+                  "alt_text": "@stackra/ts-container banner"
+                },
                 {
                   "type": "header",
                   "text": {
