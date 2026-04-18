@@ -35,9 +35,9 @@ import type { OnApplicationShutdown } from '@/interfaces/on-application-shutdown
 import type { BeforeApplicationShutdown } from '@/interfaces/before-application-shutdown.interface';
 import { MODULE_METADATA } from '@/constants';
 import type { Provider } from '@/interfaces';
-import { NestContainer } from './container';
+import type { ModuleContainer } from './container';
 import { Injector } from './injector';
-import { Module } from './module';
+import type { Module } from './module';
 
 /**
  * Type guard for OnApplicationBootstrap interface.
@@ -63,13 +63,13 @@ function hasOnApplicationShutdown(instance: any): instance is OnApplicationShutd
 /**
  * Loads (instantiates) all providers and runs lifecycle hooks.
  *
- * Created with a reference to the `NestContainer` and internally creates
+ * Created with a reference to the `ModuleContainer` and internally creates
  * an `Injector` for dependency resolution. Orchestrates the two-phase
  * bootstrap (resolve → init hooks) and the shutdown sequence.
  *
  * @example
  * ```typescript
- * const container = new NestContainer();
+ * const container = new ModuleContainer();
  * const scanner = new DependenciesScanner(container);
  * await scanner.scan(AppModule);
  *
@@ -90,10 +90,10 @@ export class InstanceLoader {
   /**
    * Create a new InstanceLoader.
    *
-   * @param container - The `NestContainer` holding all registered modules
+   * @param container - The `ModuleContainer` holding all registered modules
    *   and their provider bindings
    */
-  constructor(private readonly container: NestContainer) {
+  constructor(private readonly container: ModuleContainer) {
     this.injector = new Injector();
   }
 

@@ -96,7 +96,7 @@ export {
 // ============================================================================
 // DI Engine (Container, Injector, Scanner, Module, etc.)
 // ============================================================================
-export { NestContainer } from './injector/container';
+export { ModuleContainer } from './injector/container';
 export { Module as ModuleRef } from './injector/module';
 export { Injector } from './injector/injector';
 export { InstanceWrapper } from './injector/instance-wrapper';

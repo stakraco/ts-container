@@ -15,7 +15,7 @@
  * ```typescript
  * import { RegistryScanner } from '@stackra/ts-container';
  *
- * const container = new NestContainer();
+ * const container = new ModuleContainer();
  * const scanner = new RegistryScanner(container);
  * await scanner.scan(AppModule);
  * ```
@@ -32,7 +32,7 @@
 import type { Type, DynamicModule, Provider, ForwardReference } from '@/interfaces';
 import type { RegistryModuleMetadata } from '@/interfaces/registry-module-metadata.interface';
 import type { RegistryProviderMetadata } from '@/interfaces/registry-provider-metadata.interface';
-import { NestContainer } from './container';
+import type { ModuleContainer } from './container';
 
 /**
  * Lazy-loaded virtual module registries.
@@ -76,7 +76,7 @@ async function loadRegistries(): Promise<void> {
  *
  * @example
  * ```typescript
- * const container = new NestContainer();
+ * const container = new ModuleContainer();
  * const scanner = new RegistryScanner(container);
  * await scanner.scan(AppModule);
  * ```
@@ -91,9 +91,9 @@ export class RegistryScanner {
   /**
    * Create a new RegistryScanner.
    *
-   * @param container - The `NestContainer` to populate with modules and providers
+   * @param container - The `ModuleContainer` to populate with modules and providers
    */
-  constructor(private readonly container: NestContainer) {
+  constructor(private readonly container: ModuleContainer) {
     this.buildCaches();
   }
 

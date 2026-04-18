@@ -1,5 +1,5 @@
 /**
- * NestContainer — Top-Level Module Registry
+ * ModuleContainer — Top-Level Module Registry
  *
  * This is the central registry of the DI system. It holds:
  * - All registered modules (keyed by opaque token)
@@ -41,7 +41,7 @@ import { Module } from './module';
  *
  * @example
  * ```typescript
- * const container = new NestContainer();
+ * const container = new ModuleContainer();
  * const scanner = new DependenciesScanner(container);
  * await scanner.scan(AppModule);
  *
@@ -49,7 +49,7 @@ import { Module } from './module';
  * await loader.createInstances();
  * ```
  */
-export class NestContainer {
+export class ModuleContainer {
   /**
    * All registered modules, keyed by their opaque token.
    * The token is derived from the module class name (or a hash for dynamic modules).

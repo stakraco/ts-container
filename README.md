@@ -17,7 +17,7 @@ pnpm add @stackra/ts-container
 - 📦 `@Module()` for declaring module metadata (providers, imports, exports)
 - 🌐 `@Global()` for global module registration
 - 🔧 `DynamicModule` with `forRoot()` / `forFeature()` pattern
-- 🏗️ `NestContainer` — the core DI engine
+- 🏗️ `ModuleContainer` — the core DI engine
 - 🔍 `DependenciesScanner` for module tree walking
 - 🔄 `InstanceLoader` for provider instantiation and lifecycle hooks
 - 🔗 `forwardRef()` for circular dependency resolution
@@ -148,7 +148,7 @@ const providers = [
 | `@Global()`                 | Decorator | Make a module's exports globally available   |
 | `DynamicModule`             | Interface | Return type for `forRoot()` / `forFeature()` |
 | `Application`               | Class     | Bootstrap and manage the application         |
-| `NestContainer`             | Class     | Core DI container engine                     |
+| `ModuleContainer`           | Class     | Core DI container engine                     |
 | `DependenciesScanner`       | Class     | Module tree scanner (runtime reflection)     |
 | `RegistryScanner`           | Class     | Module tree scanner (compile-time)           |
 | `InstanceLoader`            | Class     | Provider instantiation and lifecycle         |

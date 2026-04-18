@@ -18,7 +18,7 @@
 
 import { Application } from '@stackra/ts-container';
 import { Module, Injectable } from '@stackra/ts-container';
-import { NestContainer, RegistryScanner, InstanceLoader } from '@stackra/ts-container';
+import { ModuleContainer, RegistryScanner, InstanceLoader } from '@stackra/ts-container';
 
 // ============================================================================
 // Example Modules and Providers
@@ -84,7 +84,7 @@ async function bootstrapManually() {
   console.log('\n=== Manual Bootstrap with RegistryScanner ===\n');
 
   // Step 1: Create container
-  const container = new NestContainer();
+  const container = new ModuleContainer();
 
   // Step 2: Use RegistryScanner instead of DependenciesScanner
   const scanner = new RegistryScanner(container);
@@ -138,7 +138,7 @@ async function bootstrapManually() {
 async function bootstrapWithFallback() {
   console.log('\n=== Bootstrap with Fallback ===\n');
 
-  const container = new NestContainer();
+  const container = new ModuleContainer();
 
   try {
     // Try RegistryScanner first (compile-time)
@@ -185,7 +185,7 @@ async function comparePerformance() {
   // Measure RegistryScanner
   const registryStart = performance.now();
   try {
-    const container1 = new NestContainer();
+    const container1 = new ModuleContainer();
     const scanner1 = new RegistryScanner(container1);
     await scanner1.scan(AppModule);
     const loader1 = new InstanceLoader(container1);
@@ -199,7 +199,7 @@ async function comparePerformance() {
   // Measure DependenciesScanner
   const reflectionStart = performance.now();
   const { DependenciesScanner } = await import('@stackra/ts-container');
-  const container2 = new NestContainer();
+  const container2 = new ModuleContainer();
   const scanner2 = new DependenciesScanner(container2);
   await scanner2.scan(AppModule);
   const loader2 = new InstanceLoader(container2);

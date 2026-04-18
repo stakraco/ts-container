@@ -48,10 +48,10 @@
 
 import type { Type, InjectionToken } from '@/interfaces';
 import type { ApplicationOptions } from '@/interfaces/application-options.interface';
-import { NestContainer } from '@/injector/container';
+import { ModuleContainer } from '@/injector/container';
 import { DependenciesScanner } from '@/injector/scanner';
 import { InstanceLoader } from '@/injector/instance-loader';
-import { Module as ModuleRef } from '@/injector/module';
+import type { Module as ModuleRef } from '@/injector/module';
 import type { IApplication } from '@/interfaces/application.interface';
 import { setGlobalApplication } from './global-application';
 
@@ -76,7 +76,7 @@ export class Application implements IApplication {
   /**
    * The underlying container holding all modules and provider bindings.
    */
-  private readonly container: NestContainer;
+  private readonly container: ModuleContainer;
 
   /**
    * The instance loader that orchestrates provider instantiation
@@ -96,7 +96,7 @@ export class Application implements IApplication {
    * @param container - The populated container
    * @param instanceLoader - The loader with resolved providers
    */
-  private constructor(container: NestContainer, instanceLoader: InstanceLoader) {
+  private constructor(container: ModuleContainer, instanceLoader: InstanceLoader) {
     this.container = container;
     this.instanceLoader = instanceLoader;
   }
@@ -141,7 +141,7 @@ export class Application implements IApplication {
     rootModule: Type<any>,
     options: ApplicationOptions = {}
   ): Promise<Application> {
-    const container = new NestContainer();
+    const container = new ModuleContainer();
     const scanner = new DependenciesScanner(container);
     const instanceLoader = new InstanceLoader(container);
 
@@ -361,14 +361,14 @@ export class Application implements IApplication {
   }
 
   /**
-   * Get the underlying NestContainer.
+   * Get the underlying ModuleContainer.
    *
    * For advanced use cases like inspecting the module graph,
    * accessing raw InstanceWrappers, or building dev tools.
    *
-   * @returns The `NestContainer` instance
+   * @returns The `ModuleContainer` instance
    */
-  public getContainer(): NestContainer {
+  public getContainer(): ModuleContainer {
     return this.container;
   }
 

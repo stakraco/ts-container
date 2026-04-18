@@ -37,8 +37,8 @@ import {
   PROPERTY_DEPS_METADATA,
   OPTIONAL_PROPERTY_DEPS_METADATA,
 } from '@/constants';
-import { InstanceWrapper } from './instance-wrapper';
-import { Module } from './module';
+import type { InstanceWrapper } from './instance-wrapper';
+import type { Module } from './module';
 
 /**
  * Resolves and instantiates providers within the module graph.

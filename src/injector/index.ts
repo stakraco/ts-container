@@ -4,7 +4,7 @@
  * The core DI engine — module graph management, dependency resolution,
  * instance creation, and lifecycle orchestration.
  *
- * - {@link NestContainer} — Top-level container holding all modules and their bindings
+ * - {@link ModuleContainer} — Top-level container holding all modules and their bindings
  * - {@link Module} — Runtime representation of a `@Module()` class with its providers
  * - {@link Injector} — Resolves dependencies and creates provider instances
  * - {@link InstanceWrapper} — Wraps a provider binding with metadata and cached instance
@@ -15,7 +15,7 @@
  * @module injector
  */
 
-export { NestContainer } from './container';
+export { ModuleContainer } from './container';
 export { Module } from './module';
 export { Injector } from './injector';
 export { InstanceWrapper } from './instance-wrapper';

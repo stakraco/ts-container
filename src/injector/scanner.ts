@@ -38,7 +38,7 @@
 import { getMetadata } from '@vivtel/metadata';
 import type { Type, DynamicModule, Provider, ForwardReference, ModuleMetatype } from '@/interfaces';
 import { MODULE_METADATA } from '@/constants';
-import { NestContainer } from './container';
+import type { ModuleContainer } from './container';
 
 /**
  * Scans the module tree and populates the container.
@@ -49,7 +49,7 @@ import { NestContainer } from './container';
  *
  * @example
  * ```typescript
- * const container = new NestContainer();
+ * const container = new ModuleContainer();
  * const scanner = new DependenciesScanner(container);
  * await scanner.scan(AppModule);
  * // Container now has all modules, providers, imports, and exports registered
@@ -59,9 +59,9 @@ export class DependenciesScanner {
   /**
    * Create a new DependenciesScanner.
    *
-   * @param container - The `NestContainer` to populate with modules and providers
+   * @param container - The `ModuleContainer` to populate with modules and providers
    */
-  constructor(private readonly container: NestContainer) {}
+  constructor(private readonly container: ModuleContainer) {}
 
   /**
    * Scan the entire module tree starting from the root module.

@@ -100,7 +100,7 @@ None. All changes are fully backward compatible.
 - 📦 `@Module()` decorator for module metadata declaration
 - 🌐 `@Global()` decorator for global module registration
 - 🔧 `DynamicModule` interface for `forRoot()` / `forFeature()` pattern
-- 🏗️ `NestContainer` — core container managing module registry
+- 🏗️ `ModuleContainer` — core container managing module registry
 - 🔍 `DependenciesScanner` — walks module tree, resolves imports/exports
 - 🔄 `InstanceLoader` — creates provider instances, calls lifecycle hooks
 - 🔗 `Injector` — resolves constructor dependencies across module boundaries
