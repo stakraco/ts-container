@@ -29,10 +29,10 @@
  * @module injector/registry-scanner
  */
 
+import type { ModuleContainer } from './container';
 import type { Type, DynamicModule, Provider, ForwardReference } from '@/interfaces';
 import type { RegistryModuleMetadata } from '@/interfaces/registry-module-metadata.interface';
 import type { RegistryProviderMetadata } from '@/interfaces/registry-provider-metadata.interface';
-import type { ModuleContainer } from './container';
 
 /**
  * Lazy-loaded virtual module registries.

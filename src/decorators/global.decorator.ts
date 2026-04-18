@@ -15,6 +15,7 @@
  */
 
 import { defineMetadata } from '@vivtel/metadata';
+
 import { GLOBAL_MODULE_METADATA } from '@/constants';
 
 /**

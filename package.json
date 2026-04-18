@@ -1,6 +1,6 @@
 {
-  "name": "@stakra/ts-container",
-  "version": "2.0.2",
+  "name": "@stackra/ts-container",
+  "version": "2.0.3",
   "description": "NestJS-style dependency injection for React and client-side applications. Decorators, container, injector, scanner, module system, application bootstrap, and React bindings — built from scratch, no Inversify.",
   "keywords": [
     "dependency-injection",
@@ -21,16 +21,16 @@
   "packageManager": "pnpm@10.33.0",
   "license": "MIT",
   "author": {
-    "name": "Stakra",
-    "url": "https://github.com/stakraco"
+    "name": "Stackra",
+    "url": "https://github.com/stackra-coco"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stakraco/ts-container.git"
+    "url": "git+https://github.com/stackra-coco/ts-container.git"
   },
-  "homepage": "https://github.com/stakraco/ts-container#readme",
+  "homepage": "https://github.com/stackra-coco/ts-container#readme",
   "bugs": {
-    "url": "https://github.com/stakraco/ts-container/issues"
+    "url": "https://github.com/stackra-coco/ts-container/issues"
   },
   "type": "module",
   "sideEffects": false,

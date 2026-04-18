@@ -34,8 +34,8 @@
  */
 
 import { ContainerContext } from '@/contexts/container.context';
+import { getGlobalApplication } from '@/application/global.application';
 import type { ContainerProviderProps } from '@/interfaces/container-provider-props.interface';
-import { getGlobalApplication } from '@/application/global-application';
 
 /**
  * Provides the DI container to the React component tree.

@@ -1,4 +1,25 @@
-# @stakra/ts-container
+# @stackra/ts-container
+
+## 2.0.3 — 2026-04-18
+
+### Documentation & Assets
+
+- 🎨 **Banner & logo** — added `.github/assets/banner.svg` and
+  `.github/assets/logo.svg` with the package visual identity
+- 📝 **README rewrite** — banner at top, updated badges, nav links, consistent
+  formatting throughout
+- 📚 **Example READMEs** — all four example READMEs (root, basic-di,
+  dynamic-modules, react-integration) updated with banner, badges, and
+  related-examples links
+
+### Internal
+
+- 🔧 **File rename** — `global-application.ts` → `global.application.ts` for
+  naming consistency
+- 🔧 **Import ordering** — normalised import order across `src/index.ts`,
+  `src/application/`, and `src/injector/` (no API changes)
+
+---
 
 ## 2.0.2 — 2026-04-18
 
@@ -36,9 +57,9 @@
 - `NestContainer` is renamed to `ModuleContainer`. Update any direct imports:
   ```typescript
   // Before
-  import { NestContainer } from '@stakra/ts-container';
+  import { NestContainer } from '@stackra/ts-container';
   // After
-  import { ModuleContainer } from '@stakra/ts-container';
+  import { ModuleContainer } from '@stackra/ts-container';
   ```
 
 ---
@@ -96,7 +117,7 @@ None. All changes are fully backward compatible.
 
 ### Major Features
 
-- 🎉 Initial release of @stakra/ts-container
+- 🎉 Initial release of @stackra/ts-container
 - 💉 `@Injectable()` decorator with scope support (Singleton, Transient)
 - 🎯 `@Inject(token)` for explicit token-based constructor injection
 - ❓ `@Optional()` for optional dependency injection

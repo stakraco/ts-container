@@ -15,10 +15,10 @@
  * @module injector
  */
 
-export { ModuleContainer } from './container';
 export { Module } from './module';
 export { Injector } from './injector';
-export { InstanceWrapper } from './instance-wrapper';
-export { InstanceLoader } from './instance-loader';
+export { ModuleContainer } from './container';
 export { DependenciesScanner } from './scanner';
+export { InstanceLoader } from './instance-loader';
+export { InstanceWrapper } from './instance-wrapper';
 export { RegistryScanner } from './registry-scanner';

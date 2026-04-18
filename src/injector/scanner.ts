@@ -35,10 +35,10 @@
  * @module injector/scanner
  */
 
-import { getMetadata } from '@vivtel/metadata';
-import type { Type, DynamicModule, Provider, ForwardReference, ModuleMetatype } from '@/interfaces';
 import { MODULE_METADATA } from '@/constants';
+import { getMetadata } from '@vivtel/metadata';
 import type { ModuleContainer } from './container';
+import type { Type, DynamicModule, Provider, ForwardReference, ModuleMetatype } from '@/interfaces';
 
 /**
  * Scans the module tree and populates the container.

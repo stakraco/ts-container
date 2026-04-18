@@ -11,10 +11,10 @@
  * @module application
  */
 
-export { Application } from './application';
 export {
   getGlobalApplication,
   hasGlobalApplication,
-  clearGlobalApplication,
   setGlobalApplication,
-} from './global-application';
+  clearGlobalApplication,
+} from './global.application';
+export { Application } from './application';

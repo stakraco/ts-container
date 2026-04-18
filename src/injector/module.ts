@@ -21,6 +21,8 @@
  * @module injector/module
  */
 
+import { getMetadata } from '@vivtel/metadata';
+
 import type {
   InjectionToken,
   Type,
@@ -38,9 +40,8 @@ import {
   isFactoryProvider,
   isExistingProvider,
 } from '@/interfaces/provider.interface';
-import { SCOPE_OPTIONS_METADATA } from '@/constants';
-import { getMetadata } from '@vivtel/metadata';
 import { InstanceWrapper } from './instance-wrapper';
+import { SCOPE_OPTIONS_METADATA } from '@/constants';
 
 /**
  * Runtime representation of a module.

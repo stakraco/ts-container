@@ -1,24 +1,53 @@
-# @stakra/ts-container
+<div align="center">
+  <img src=".github/assets/banner.svg" alt="@stackra/ts-container" width="100%" />
+</div>
 
 <div align="center">
 
-[![npm version](https://img.shields.io/npm/v/@stakra/ts-container?style=flat-square&color=cb3837)](https://www.npmjs.com/package/@stakra/ts-container)
-[![npm downloads](https://img.shields.io/npm/dm/@stakra/ts-container?style=flat-square&color=cb3837)](https://www.npmjs.com/package/@stakra/ts-container)
-[![CI](https://img.shields.io/github/actions/workflow/status/stakraco/ts-container/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/stakraco/ts-container/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/@stackra/ts-container?style=flat-square&color=3178c6)](https://www.npmjs.com/package/@stackra/ts-container)
+[![npm downloads](https://img.shields.io/npm/dm/@stackra/ts-container?style=flat-square&color=3178c6)](https://www.npmjs.com/package/@stackra/ts-container)
+[![CI](https://img.shields.io/github/actions/workflow/status/stackraco/ts-container/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/stackra-coco/ts-container/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![pnpm](https://img.shields.io/badge/pnpm-10.x-f69220?style=flat-square&logo=pnpm&logoColor=white)](https://pnpm.io/)
 
 NestJS-style IoC container and dependency injection for TypeScript and React.  
 Built from scratch — no Inversify, no heavy runtime.
 
+[Installation](#installation) · [Quick Start](#quick-start) ·
+[Core Concepts](#core-concepts) · [React Integration](#react-integration) ·
+[API Reference](#api-reference)
+
 </div>
+
+---
+
+## Features
+
+- 💉 **`@Injectable()`** — mark classes as DI-managed providers
+- 🎯 **`@Inject(token)`** — explicit token injection (string, symbol, or class)
+- ❓ **`@Optional()`** — optional dependencies that gracefully degrade to
+  `undefined`
+- 📦 **`@Module()`** — declare module metadata (providers, imports, exports)
+- 🌐 **`@Global()`** — make a module's exports available everywhere
+- 🔧 **Dynamic Modules** — `forRoot()` / `forFeature()` pattern for configurable
+  modules
+- 🎭 **Four provider types** — class, value, factory, existing (alias)
+- 📐 **Scopes** — singleton (default) and transient
+- 🔄 **Lifecycle hooks** — `OnModuleInit`, `OnModuleDestroy`,
+  `OnApplicationBootstrap`, `OnApplicationShutdown`, `BeforeApplicationShutdown`
+- 🔗 **`forwardRef()`** — resolve circular module dependencies
+- 🏭 **`ModuleRef.create()`** — dynamic instantiation outside the DI flow
+- 🚀 **Entry providers** — eager initialization for side-effect providers
+- ⚙️ **Application config** — global settings injected as `APP_CONFIG`
+- 🌍 **Global application singleton** — React integration without prop drilling
+- ⚡ **`RegistryScanner`** — compile-time alternative to runtime reflection
+- ⚛️ **React hooks** — `useInject`, `useOptionalInject`, `useContainer`
 
 ---
 
 ## Contents
 
-- [Features](#features)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [Core Concepts](#core-concepts)
@@ -51,41 +80,17 @@ Built from scratch — no Inversify, no heavy runtime.
 
 ---
 
-## Features
-
-- 💉 **`@Injectable()`** — mark classes as DI-managed providers
-- 🎯 **`@Inject(token)`** — explicit token injection (string, symbol, or class)
-- ❓ **`@Optional()`** — optional dependencies that gracefully degrade to
-  `undefined`
-- 📦 **`@Module()`** — declare module metadata (providers, imports, exports)
-- 🌐 **`@Global()`** — make a module's exports available everywhere
-- 🔧 **Dynamic Modules** — `forRoot()` / `forFeature()` pattern for configurable
-  modules
-- 🎭 **Four provider types** — class, value, factory, existing (alias)
-- 📐 **Scopes** — singleton (default) and transient
-- 🔄 **Lifecycle hooks** — `OnModuleInit`, `OnModuleDestroy`,
-  `OnApplicationBootstrap`, `OnApplicationShutdown`, `BeforeApplicationShutdown`
-- 🔗 **`forwardRef()`** — resolve circular module dependencies
-- 🏭 **`ModuleRef.create()`** — dynamic instantiation outside the DI flow
-- 🚀 **Entry providers** — eager initialization for side-effect providers
-- ⚙️ **Application config** — global settings injected as `APP_CONFIG`
-- 🌍 **Global application singleton** — React integration without prop drilling
-- ⚡ **`RegistryScanner`** — compile-time alternative to runtime reflection
-- ⚛️ **React hooks** — `useInject`, `useOptionalInject`, `useContainer`
-
----
-
 ## Installation
 
 ```bash
 # pnpm
-pnpm add @stakra/ts-container reflect-metadata
+pnpm add @stackra/ts-container reflect-metadata
 
 # npm
-npm install @stakra/ts-container reflect-metadata
+npm install @stackra/ts-container reflect-metadata
 
 # yarn
-yarn add @stakra/ts-container reflect-metadata
+yarn add @stackra/ts-container reflect-metadata
 ```
 
 ---
@@ -114,7 +119,7 @@ import 'reflect-metadata';
 **3. Define services and a module**
 
 ```typescript
-import { Injectable, Inject, Module, Application } from '@stakra/ts-container';
+import { Injectable, Inject, Module, Application } from '@stackra/ts-container';
 
 @Injectable()
 class LoggerService {
@@ -159,7 +164,7 @@ Marks a class as a DI-managed provider. Required on any class that needs
 dependencies injected or that will be injected into other classes.
 
 ```typescript
-import { Injectable, Scope } from '@stakra/ts-container';
+import { Injectable, Scope } from '@stackra/ts-container';
 
 // Singleton (default) — one instance for the whole app
 @Injectable()
@@ -311,7 +316,7 @@ class CacheModule {
   static forRoot(config: CacheConfig): DynamicModule {
     return {
       module: CacheModule,
-      global: true, // available everywhere
+      global: true,
       providers: [{ provide: CACHE_CONFIG, useValue: config }, CacheManager],
       exports: [CacheManager],
     };
@@ -347,7 +352,7 @@ class AppModule {}
 ### Scopes
 
 ```typescript
-import { Injectable, Scope } from '@stakra/ts-container';
+import { Injectable, Scope } from '@stackra/ts-container';
 
 // DEFAULT — singleton, one instance for the whole application
 @Injectable()
@@ -380,7 +385,7 @@ import {
   OnApplicationBootstrap,
   OnApplicationShutdown,
   BeforeApplicationShutdown,
-} from '@stakra/ts-container';
+} from '@stackra/ts-container';
 
 @Injectable()
 class DatabaseService
@@ -443,7 +448,7 @@ class HttpServer implements BeforeApplicationShutdown, OnApplicationShutdown {
 
 ```typescript
 import 'reflect-metadata';
-import { Application } from '@stakra/ts-container';
+import { Application } from '@stackra/ts-container';
 
 const app = await Application.create(AppModule);
 
@@ -539,7 +544,7 @@ available to all child components.
 ```tsx
 // main.tsx
 import 'reflect-metadata';
-import { Application, ContainerProvider } from '@stakra/ts-container';
+import { Application, ContainerProvider } from '@stackra/ts-container';
 import ReactDOM from 'react-dom/client';
 
 // Option 1 — global app (recommended, no props needed)
@@ -566,7 +571,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 Resolve a provider from the container. Throws if not found. Result is memoized.
 
 ```tsx
-import { useInject } from '@stakra/ts-container';
+import { useInject } from '@stackra/ts-container';
 
 function UserProfile({ userId }: { userId: string }) {
   const userService = useInject(UserService);
@@ -591,7 +596,7 @@ function CacheStatus() {
 Like `useInject` but returns `undefined` instead of throwing if not found.
 
 ```tsx
-import { useOptionalInject } from '@stakra/ts-container';
+import { useOptionalInject } from '@stackra/ts-container';
 
 function AnalyticsWidget() {
   const tracker = useOptionalInject(AnalyticsService);
@@ -607,7 +612,7 @@ function AnalyticsWidget() {
 Access the raw `ContainerResolver` for advanced use cases.
 
 ```tsx
-import { useContainer } from '@stakra/ts-container';
+import { useContainer } from '@stackra/ts-container';
 
 function DebugPanel() {
   const container = useContainer();
@@ -630,7 +635,7 @@ function DebugPanel() {
 Use `forwardRef()` when two modules import each other:
 
 ```typescript
-import { forwardRef } from '@stakra/ts-container';
+import { forwardRef } from '@stackra/ts-container';
 
 // cats.module.ts
 @Module({
@@ -850,13 +855,12 @@ class OrderService {
 }
 ```
 
-> **Note:** `emitDecoratorMetadata` is what allows the injector to automatically
-> resolve constructor dependencies without explicit `@Inject()` on every
-> parameter. Without it, you must use `@Inject(Token)` on every constructor
-> parameter.
+> `emitDecoratorMetadata` is what allows the injector to automatically resolve
+> constructor dependencies without explicit `@Inject()` on every parameter.
+> Without it, you must use `@Inject(Token)` on every constructor parameter.
 
 ---
 
 ## License
 
-MIT © [Stakra](https://github.com/stakraco)
+MIT © [Stackra](https://github.com/stackra-coco)

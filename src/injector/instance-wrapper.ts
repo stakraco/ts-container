@@ -16,9 +16,9 @@
  * @module injector/instance-wrapper
  */
 
-import type { InjectionToken, Type } from '@/interfaces';
 import { Scope } from '@/enums';
 import type { Module } from './module';
+import type { InjectionToken, Type } from '@/interfaces';
 
 /**
  * Wraps a single provider binding with all its metadata and cached instance.

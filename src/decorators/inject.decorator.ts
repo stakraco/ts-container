@@ -27,6 +27,7 @@
  */
 
 import { getMetadata, updateMetadata } from '@vivtel/metadata';
+
 import {
   PARAMTYPES_METADATA,
   PROPERTY_DEPS_METADATA,

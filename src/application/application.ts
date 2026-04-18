@@ -46,14 +46,14 @@
  * @module application/application
  */
 
-import type { Type, InjectionToken } from '@/interfaces';
-import type { ApplicationOptions } from '@/interfaces/application-options.interface';
 import { ModuleContainer } from '@/injector/container';
+import type { Type, InjectionToken } from '@/interfaces';
 import { DependenciesScanner } from '@/injector/scanner';
+import { setGlobalApplication } from './global.application';
 import { InstanceLoader } from '@/injector/instance-loader';
 import type { Module as ModuleRef } from '@/injector/module';
 import type { IApplication } from '@/interfaces/application.interface';
-import { setGlobalApplication } from './global-application';
+import type { ApplicationOptions } from '@/interfaces/application-options.interface';
 
 /**
  * The bootstrapped application context.

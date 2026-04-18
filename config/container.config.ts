@@ -15,7 +15,7 @@
  * ```typescript
  * // main.ts
  * import 'reflect-metadata';
- * import { Application } from '@stakra/ts-container';
+ * import { Application } from '@stackra/ts-container';
  * import containerConfig from './config/container.config';
  * import { AppModule } from './app.module';
  *
@@ -35,7 +35,7 @@
  * @module config/container
  */
 
-import { defineConfig } from '@stakra/ts-container';
+import { defineConfig } from '@stackra/ts-container';
 
 /**
  * Application container configuration.

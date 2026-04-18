@@ -28,16 +28,17 @@
  */
 
 import { getMetadata } from '@vivtel/metadata';
-import { hasOnModuleInit } from '@/interfaces/on-module-init.interface';
-import { hasOnModuleDestroy } from '@/interfaces/on-module-destroy.interface';
-import type { OnApplicationBootstrap } from '@/interfaces/on-application-bootstrap.interface';
-import type { OnApplicationShutdown } from '@/interfaces/on-application-shutdown.interface';
-import type { BeforeApplicationShutdown } from '@/interfaces/before-application-shutdown.interface';
-import { MODULE_METADATA } from '@/constants';
-import type { Provider } from '@/interfaces';
-import type { ModuleContainer } from './container';
+
 import { Injector } from './injector';
 import type { Module } from './module';
+import type { Provider } from '@/interfaces';
+import { MODULE_METADATA } from '@/constants';
+import type { ModuleContainer } from './container';
+import { hasOnModuleInit } from '@/interfaces/on-module-init.interface';
+import { hasOnModuleDestroy } from '@/interfaces/on-module-destroy.interface';
+import type { OnApplicationShutdown } from '@/interfaces/on-application-shutdown.interface';
+import type { OnApplicationBootstrap } from '@/interfaces/on-application-bootstrap.interface';
+import type { BeforeApplicationShutdown } from '@/interfaces/before-application-shutdown.interface';
 
 /**
  * Type guard for OnApplicationBootstrap interface.

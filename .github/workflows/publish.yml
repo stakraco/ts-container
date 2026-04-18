@@ -1,5 +1,5 @@
 # =============================================================================
-# Publish — @stakra/ts-container
+# Publish — @stackra/ts-container
 #
 # Triggered by:
 #   - Pushing a semver tag  (v1.2.3 / v1.2.3-beta.0)
@@ -122,7 +122,7 @@ jobs:
       id-token: write # required for npm provenance
     environment:
       name: npm
-      url: https://www.npmjs.com/package/@stakra/ts-container
+      url: https://www.npmjs.com/package/@stackra/ts-container
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
@@ -172,7 +172,7 @@ jobs:
           if [ ! -s release_body.md ]; then
             echo "Release v${VERSION}" > release_body.md
           fi
-          echo "See [CHANGELOG](https://github.com/stakraco/ts-container/blob/main/CHANGELOG.md) for full details." >> release_body.md
+          echo "See [CHANGELOG](https://github.com/stackra-coco/ts-container/blob/main/CHANGELOG.md) for full details." >> release_body.md
 
       - name: 🎉 Create Release
         uses: softprops/action-gh-release@v2
@@ -218,13 +218,13 @@ jobs:
           webhook-type: incoming-webhook
           payload: |
             {
-              "text": "✅ *@stakra/ts-container ${{ needs.validate.outputs.tag }}* published to npm",
+              "text": "✅ *@stackra/ts-container ${{ needs.validate.outputs.tag }}* published to npm",
               "blocks": [
                 {
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "🚀 New Release: @stakra/ts-container ${{ needs.validate.outputs.tag }}"
+                    "text": "🚀 New Release: @stackra/ts-container ${{ needs.validate.outputs.tag }}"
                   }
                 },
                 {
@@ -240,11 +240,11 @@ jobs:
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*npm:*\n<https://www.npmjs.com/package/@stakra/ts-container/v/${{ needs.validate.outputs.version }}|View on npm>"
+                      "text": "*npm:*\n<https://www.npmjs.com/package/@stackra/ts-container/v/${{ needs.validate.outputs.version }}|View on npm>"
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Release:*\n<https://github.com/stakraco/ts-container/releases/tag/${{ needs.validate.outputs.tag }}|View on GitHub>"
+                      "text": "*Release:*\n<https://github.com/stackra-coco/ts-container/releases/tag/${{ needs.validate.outputs.tag }}|View on GitHub>"
                     }
                   ]
                 }
@@ -261,13 +261,13 @@ jobs:
           webhook-type: incoming-webhook
           payload: |
             {
-              "text": "❌ *@stakra/ts-container ${{ needs.validate.outputs.tag }}* publish FAILED",
+              "text": "❌ *@stackra/ts-container ${{ needs.validate.outputs.tag }}* publish FAILED",
               "blocks": [
                 {
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "❌ Publish Failed: @stakra/ts-container ${{ needs.validate.outputs.tag }}"
+                    "text": "❌ Publish Failed: @stackra/ts-container ${{ needs.validate.outputs.tag }}"
                   }
                 },
                 {

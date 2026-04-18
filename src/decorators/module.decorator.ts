@@ -29,6 +29,7 @@
  */
 
 import { defineMetadata } from '@vivtel/metadata';
+
 import type { ModuleMetadata } from '@/interfaces';
 
 /**

@@ -8,6 +8,7 @@
  */
 
 import { useMemo } from 'react';
+
 import type { InjectionToken } from '@/interfaces';
 import { useContainer } from '@/hooks/use-container';
 

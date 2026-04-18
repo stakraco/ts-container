@@ -29,16 +29,17 @@
  */
 
 import { getMetadata, getAllMetadata, hasOwnMetadata } from '@vivtel/metadata';
-import type { InjectionToken, Type } from '@/interfaces';
+
 import {
   PARAMTYPES_METADATA,
-  SELF_DECLARED_DEPS_METADATA,
   OPTIONAL_DEPS_METADATA,
   PROPERTY_DEPS_METADATA,
+  SELF_DECLARED_DEPS_METADATA,
   OPTIONAL_PROPERTY_DEPS_METADATA,
 } from '@/constants';
-import type { InstanceWrapper } from './instance-wrapper';
 import type { Module } from './module';
+import type { InjectionToken, Type } from '@/interfaces';
+import type { InstanceWrapper } from './instance-wrapper';
 
 /**
  * Resolves and instantiates providers within the module graph.

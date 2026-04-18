@@ -25,7 +25,7 @@ import type { ApplicationOptions } from '@/interfaces/application-options.interf
  * @example
  * ```typescript
  * // container.config.ts
- * import { defineConfig } from '@stakra/ts-container';
+ * import { defineConfig } from '@stackra/ts-container';
  *
  * export default defineConfig({
  *   debug: import.meta.env.DEV,
@@ -42,7 +42,7 @@ import type { ApplicationOptions } from '@/interfaces/application-options.interf
  * });
  *
  * // main.ts
- * import { Application } from '@stakra/ts-container';
+ * import { Application } from '@stackra/ts-container';
  * import containerConfig from './container.config';
  *
  * const app = await Application.create(AppModule, containerConfig);

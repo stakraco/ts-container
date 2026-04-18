@@ -28,9 +28,10 @@
 
 import 'reflect-metadata';
 import { getMetadata } from '@vivtel/metadata';
-import type { Type, Provider, DynamicModule, InjectionToken, ModuleMetatype } from '@/interfaces';
-import { GLOBAL_MODULE_METADATA } from '@/constants';
+
 import { Module } from './module';
+import { GLOBAL_MODULE_METADATA } from '@/constants';
+import type { Type, Provider, DynamicModule, InjectionToken, ModuleMetatype } from '@/interfaces';
 
 /**
  * The top-level DI container.

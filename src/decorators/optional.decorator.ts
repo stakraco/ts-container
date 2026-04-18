@@ -14,6 +14,7 @@
  */
 
 import { updateMetadata } from '@vivtel/metadata';
+
 import { OPTIONAL_DEPS_METADATA, OPTIONAL_PROPERTY_DEPS_METADATA } from '@/constants';
 
 /**

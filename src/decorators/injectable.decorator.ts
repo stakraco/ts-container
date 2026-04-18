@@ -24,8 +24,9 @@
  */
 
 import { defineMetadata } from '@vivtel/metadata';
-import { INJECTABLE_WATERMARK, SCOPE_OPTIONS_METADATA } from '@/constants';
+
 import type { ScopeOptions } from '@/interfaces';
+import { INJECTABLE_WATERMARK, SCOPE_OPTIONS_METADATA } from '@/constants';
 
 /**
  * Marks a class as injectable (a DI-managed provider).
