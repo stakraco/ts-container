@@ -2,6 +2,15 @@
 
 ## 2.0.5 — 2026-04-18
 
+### Improvements
+
+- 💬 **Rich Slack release notifications** — redesigned the publish workflow's
+  Slack message with full Block Kit layout: release notes from CHANGELOG.md,
+  release type badge (stable / pre-release), commit count since last tag,
+  action buttons (npm, GitHub Release, Full Changelog, Workflow Run), and a
+  context footer with actor, commit SHA, and compare link. Failure
+  notifications now include View Logs and Re-run buttons.
+
 ### Fixes
 
 - 🔗 **Fix GitHub org URL** — corrected `stackra-coco` → `stackra-co` in all
