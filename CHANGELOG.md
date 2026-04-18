@@ -1,5 +1,15 @@
 # @stackra/ts-container
 
+## 2.0.4 — 2026-04-18
+
+### Fixes
+
+- 🔗 **Correct repository URL** — `package.json` and `README.md` now point to
+  `github.com/stackra-co/ts-container` (was `stackra-coco`); this was causing
+  npm provenance verification to fail on publish
+
+---
+
 ## 2.0.3 — 2026-04-18
 
 ### Documentation & Assets

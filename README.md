@@ -6,7 +6,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@stackra/ts-container?style=flat-square&color=3178c6)](https://www.npmjs.com/package/@stackra/ts-container)
 [![npm downloads](https://img.shields.io/npm/dm/@stackra/ts-container?style=flat-square&color=3178c6)](https://www.npmjs.com/package/@stackra/ts-container)
-[![CI](https://img.shields.io/github/actions/workflow/status/stackraco/ts-container/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/stackra-coco/ts-container/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/stackra-co/ts-container/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/stackra-co/ts-container/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![pnpm](https://img.shields.io/badge/pnpm-10.x-f69220?style=flat-square&logo=pnpm&logoColor=white)](https://pnpm.io/)
@@ -863,4 +863,4 @@ class OrderService {
 
 ## License
 
-MIT © [Stackra](https://github.com/stackra-coco)
+MIT © [Stackra](https://github.com/stackra-co)
