@@ -88,13 +88,11 @@ jobs:
         run: pnpm format:check
 
   # ---------------------------------------------------------------------------
-  # Lint — non-blocking (pre-existing monorepo ESLint version conflict)
-  # Remove `continue-on-error` once the shared config is updated to eslint 10
+  # Lint
   # ---------------------------------------------------------------------------
   lint:
     name: 🔍 Lint
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup

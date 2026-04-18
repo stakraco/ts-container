@@ -82,7 +82,6 @@
     }
   },
   "devDependencies": {
-    "@nesvel/eslint-config": "^1.0.5",
     "@nesvel/prettier-config": "^1.0.3",
     "@nesvel/tsup-config": "^1.0.3",
     "@nesvel/typescript-config": "^1.0.4",

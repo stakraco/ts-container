@@ -1,46 +1,53 @@
 /**
- * @fileoverview ESLint configuration for @stackra/ts-container package
+ * ESLint configuration for @stakra/ts-container
  *
- * This configuration extends the shared @nesvel/eslint-config with
- * project-specific ignore patterns. Uses the ESLint flat config format.
+ * Standalone flat config — does not extend the monorepo shared config
+ * to avoid pulling in monorepo-only plugins (turbo, etc.) that are not
+ * installed in this package.
  *
- * Configuration Features:
- * - TypeScript Rules: TypeScript-aware linting via typescript-eslint
- * - Import Ordering: Enforces consistent import order and detects unused imports
- * - Code Style: Consistent code style enforcement across the monorepo
- * - Ignore Patterns: Excludes build output, node_modules, and config files
- *
- * @module @stackra/ts-container
- * @category Configuration
- * @see https://eslint.org/docs/latest/use/configure/configuration-files
+ * @module eslint.config
  */
 
-// Import the Linter type for type-safe configuration
-import type { Linter } from 'eslint';
+import tseslint from 'typescript-eslint';
 
-// Import the shared Vite-optimized ESLint configuration from @nesvel/eslint-config.
-// This includes TypeScript, import ordering, and style rules.
-import { viteConfig } from '@nesvel/eslint-config';
-
-const config: Linter.Config[] = [
-  // Spread the shared Nesvel ESLint configuration.
-  // Includes TypeScript, import, and style rules.
-  ...viteConfig,
-
-  // Files and directories excluded from linting:
-  //   - dist/          — build output (generated code)
-  //   - node_modules/  — third-party dependencies
-  //   - *.config.js    — JavaScript config files
-  //   - *.config.ts    — TypeScript config files (tsup, vitest, etc.)
+export default tseslint.config(
+  // ── Ignore patterns ────────────────────────────────────────────────────
   {
-    ignores: ['dist/**', 'node_modules/**', '*.config.js', '*.config.ts'],
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      'coverage/**',
+      '.examples/**',
+      '*.config.js',
+      '*.config.ts',
+      'eslint.config.ts',
+    ],
   },
 
-  // Add package-specific rule overrides here.
-  // These take precedence over the shared config.
+  // ── TypeScript files ────────────────────────────────────────────────────
   {
-    rules: {},
-  },
-];
-
-export default config;
+    files: ['src/**/*.ts', 'src/**/*.tsx'],
+    extends: [...tseslint.configs.recommended],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    rules: {
+      // Allow explicit `any` in DI internals where types are intentionally loose
+      '@typescript-eslint/no-explicit-any': 'warn',
+      // Require explicit return types on public methods
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      // Allow unused vars prefixed with _
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+      // Allow non-null assertions in injector internals
+      '@typescript-eslint/no-non-null-assertion': 'warn',
+      // No require() — ESM only
+      '@typescript-eslint/no-require-imports': 'error',
+    },
+  }
+);
