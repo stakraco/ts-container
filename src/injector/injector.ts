@@ -266,7 +266,7 @@ export class Injector {
    * @throws Error if a factory dependency cannot be resolved
    */
   private async resolveFactory<T>(wrapper: InstanceWrapper<T>, moduleRef: Module): Promise<T> {
-    const factory = wrapper.metatype as Function;
+    const factory = wrapper.metatype as (...args: unknown[]) => T | Promise<T>;
     const injectTokens = wrapper.inject ?? [];
 
     // Use the factory's host module for dependency resolution.

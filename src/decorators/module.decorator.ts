@@ -72,11 +72,10 @@ export function Module(metadata: ModuleMetadata): ClassDecorator {
     );
   }
 
-  return (target: Function) => {
+  return (target: object) => {
     for (const property in metadata) {
       if (Object.prototype.hasOwnProperty.call(metadata, property)) {
-        // Store each module metadata key separately so the scanner can read them individually
-        defineMetadata(property, (metadata as any)[property], target as object);
+        defineMetadata(property, (metadata as Record<string, unknown>)[property], target);
       }
     }
   };

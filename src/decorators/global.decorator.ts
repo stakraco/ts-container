@@ -51,7 +51,7 @@ import { GLOBAL_MODULE_METADATA } from '@/constants';
  * ```
  */
 export function Global(): ClassDecorator {
-  return (target: Function) => {
-    defineMetadata(GLOBAL_MODULE_METADATA, true, target as object);
+  return (target: object) => {
+    defineMetadata(GLOBAL_MODULE_METADATA, true, target);
   };
 }

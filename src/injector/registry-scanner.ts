@@ -53,11 +53,11 @@ async function loadRegistries(): Promise<void> {
   }
 
   try {
-    // @ts-ignore - Virtual module may not exist
+    // @ts-expect-error — virtual module may not exist at build time
     const modulesModule = await import('virtual:decorator-registry/modules');
     MODULE_REGISTRY = modulesModule.MODULE_REGISTRY;
 
-    // @ts-ignore - Virtual module may not exist
+    // @ts-expect-error — virtual module may not exist at build time
     const providersModule = await import('virtual:decorator-registry/providers');
     PROVIDER_REGISTRY = providersModule.PROVIDER_REGISTRY;
 

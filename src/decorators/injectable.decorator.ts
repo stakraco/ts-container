@@ -55,10 +55,8 @@ import type { ScopeOptions } from '@/interfaces';
  * ```
  */
 export function Injectable(options?: ScopeOptions): ClassDecorator {
-  return (target: Function) => {
-    // Mark the class as injectable so the scanner can identify it
-    defineMetadata(INJECTABLE_WATERMARK, true, target as object);
-    // Store scope options for the injector to read during resolution
-    defineMetadata(SCOPE_OPTIONS_METADATA, options, target as object);
+  return (target: object) => {
+    defineMetadata(INJECTABLE_WATERMARK, true, target);
+    defineMetadata(SCOPE_OPTIONS_METADATA, options, target);
   };
 }
