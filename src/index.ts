@@ -80,6 +80,7 @@ export { Scope } from './enums/scope.enum';
 // Utilities
 // ============================================================================
 export { forwardRef } from './utils/forward-ref.util';
+export { defineConfig } from './utils/define-config.util';
 export { hasOnModuleInit } from './interfaces/on-module-init.interface';
 export { hasOnModuleDestroy } from './interfaces/on-module-destroy.interface';
 
