@@ -11,14 +11,14 @@
  * - Static validation at build time
  *
  * ## Requirements:
- * 1. @stackra/vite-decorator-discovery plugin enabled in vite.config.ts
+ * 1. @stackra-inc/vite-decorator-discovery plugin enabled in vite.config.ts
  * 2. Type reference added to vite-env.d.ts
  * 3. Use RegistryScanner instead of DependenciesScanner
  */
 
-import { Application } from '@stackra/ts-container';
-import { Module, Injectable } from '@stackra/ts-container';
-import { ModuleContainer, RegistryScanner, InstanceLoader } from '@stackra/ts-container';
+import { Application } from '@stackra-inc/ts-container';
+import { Module, Injectable } from '@stackra-inc/ts-container';
+import { ModuleContainer, RegistryScanner, InstanceLoader } from '@stackra-inc/ts-container';
 
 // ============================================================================
 // Example Modules and Providers
@@ -122,7 +122,7 @@ async function bootstrapManually() {
     ) {
       console.error('\n❌ Error: Decorator discovery plugin not enabled');
       console.error('\nTo fix this:');
-      console.error('1. Add @stackra/vite-decorator-discovery to vite.config.ts');
+      console.error('1. Add @stackra-inc/vite-decorator-discovery to vite.config.ts');
       console.error('2. Add type reference to vite-env.d.ts');
       console.error('3. Restart the dev server\n');
     } else {
@@ -153,7 +153,7 @@ async function bootstrapWithFallback() {
     ) {
       // Fallback to DependenciesScanner (runtime reflection)
       console.warn('⚠ Virtual registries not found, falling back to runtime reflection');
-      const { DependenciesScanner } = await import('@stackra/ts-container');
+      const { DependenciesScanner } = await import('@stackra-inc/ts-container');
       const scanner = new DependenciesScanner(container);
       await scanner.scan(AppModule);
       console.log('✓ Using runtime reflection (reflect-metadata)');
@@ -198,7 +198,7 @@ async function comparePerformance() {
 
   // Measure DependenciesScanner
   const reflectionStart = performance.now();
-  const { DependenciesScanner } = await import('@stackra/ts-container');
+  const { DependenciesScanner } = await import('@stackra-inc/ts-container');
   const container2 = new ModuleContainer();
   const scanner2 = new DependenciesScanner(container2);
   await scanner2.scan(AppModule);

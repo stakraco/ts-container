@@ -1,15 +1,15 @@
 # =============================================================================
-# Publish — @stackra/ts-container
+# Publish — @stackra-inc/ts-container
 #
 # Triggered by:
 #   - Pushing a semver tag  (v1.2.3 / v1.2.3-beta.0)
 #   - Manual workflow_dispatch with optional dry-run
 #
 # Required secrets:
-#   NPM_TOKEN          — npm automation token (Granular: read+write packages)
+#   STACKRA_NPM_TOKEN          — npm automation token (Granular: read+write packages)
 #
 # Optional secrets (Slack notification):
-#   SLACK_WEBHOOK_URL  — Incoming Webhook URL for release announcements
+#   STACKRA_SLACK_WEBHOOK_URL  — Incoming Webhook URL for release announcements
 #
 # Flow:
 #   validate ──► quality ──► publish ──► release ──► notify (optional)
@@ -17,7 +17,7 @@
 # Notes:
 #   - npm provenance is enabled (--provenance) for supply-chain transparency
 #   - GitHub Release is created automatically from CHANGELOG.md
-#   - Slack message is skipped if SLACK_WEBHOOK_URL secret is not set
+#   - Slack message is skipped if STACKRA_SLACK_WEBHOOK_URL secret is not set
 # =============================================================================
 
 name: Publish
@@ -122,7 +122,7 @@ jobs:
       id-token: write # required for npm provenance
     environment:
       name: npm
-      url: https://www.npmjs.com/package/@stackra/ts-container
+      url: https://www.npmjs.com/package/@stackra-inc/ts-container
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
@@ -144,7 +144,7 @@ jobs:
       - name: 🚀 Publish
         run: pnpm publish --access public --no-git-checks --provenance
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.STACKRA_NPM_TOKEN }}
 
   # ---------------------------------------------------------------------------
   # Create GitHub Release
@@ -172,7 +172,7 @@ jobs:
           if [ ! -s release_body.md ]; then
             echo "Release v${VERSION}" > release_body.md
           fi
-          echo "See [CHANGELOG](https://github.com/stackra-co/ts-container/blob/main/CHANGELOG.md) for full details." >> release_body.md
+          echo "See [CHANGELOG](https://github.com/stackra-inc/ts-container/blob/main/CHANGELOG.md) for full details." >> release_body.md
 
       - name: 🎉 Create Release
         uses: softprops/action-gh-release@v2
@@ -186,7 +186,7 @@ jobs:
           make_latest: ${{ needs.validate.outputs.is_prerelease == 'false' }}
 
   # ---------------------------------------------------------------------------
-  # Slack notification (optional — skipped if SLACK_WEBHOOK_URL not set)
+  # Slack notification (optional — skipped if STACKRA_SLACK_WEBHOOK_URL not set)
   # ---------------------------------------------------------------------------
   notify:
     name: 💬 Slack Notification
@@ -204,11 +204,11 @@ jobs:
       - name: 🔍 Check if Slack webhook is configured
         id: check
         run: |
-          if [ -n "${{ secrets.SLACK_WEBHOOK_URL }}" ]; then
+          if [ -n "${{ secrets.STACKRA_SLACK_WEBHOOK_URL }}" ]; then
             echo "configured=true" >> $GITHUB_OUTPUT
           else
             echo "configured=false" >> $GITHUB_OUTPUT
-            echo "ℹ️ SLACK_WEBHOOK_URL not set — skipping Slack notification"
+            echo "ℹ️ STACKRA_SLACK_WEBHOOK_URL not set — skipping Slack notification"
           fi
 
       - name: 📝 Extract release notes & metadata
@@ -289,22 +289,22 @@ jobs:
           needs.release.result == 'success'
         uses: slackapi/slack-github-action@v2
         with:
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook: ${{ secrets.STACKRA_SLACK_WEBHOOK_URL }}
           webhook-type: incoming-webhook
           payload: |
             {
-              "text": "✅ @stackra/ts-container ${{ needs.validate.outputs.tag }} published to npm",
+              "text": "✅ @stackra-inc/ts-container ${{ needs.validate.outputs.tag }} published to npm",
               "blocks": [
                 {
                   "type": "image",
-                  "image_url": "https://raw.githubusercontent.com/stackra-co/ts-container/main/.github/assets/banner.png",
-                  "alt_text": "@stackra/ts-container banner"
+                  "image_url": "https://raw.githubusercontent.com/stackra-inc/ts-container/main/.github/assets/banner.png",
+                  "alt_text": "@stackra-inc/ts-container banner"
                 },
                 {
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "📦 @stackra/ts-container ${{ needs.validate.outputs.tag }}",
+                    "text": "📦 @stackra-inc/ts-container ${{ needs.validate.outputs.tag }}",
                     "emoji": true
                   }
                 },
@@ -352,7 +352,7 @@ jobs:
                         "text": "📦 npm",
                         "emoji": true
                       },
-                      "url": "https://www.npmjs.com/package/@stackra/ts-container/v/${{ needs.validate.outputs.version }}"
+                      "url": "https://www.npmjs.com/package/@stackra-inc/ts-container/v/${{ needs.validate.outputs.version }}"
                     },
                     {
                       "type": "button",
@@ -361,7 +361,7 @@ jobs:
                         "text": "🏷️ GitHub Release",
                         "emoji": true
                       },
-                      "url": "https://github.com/stackra-co/ts-container/releases/tag/${{ needs.validate.outputs.tag }}"
+                      "url": "https://github.com/stackra-inc/ts-container/releases/tag/${{ needs.validate.outputs.tag }}"
                     },
                     {
                       "type": "button",
@@ -370,7 +370,7 @@ jobs:
                         "text": "📝 Full Changelog",
                         "emoji": true
                       },
-                      "url": "https://github.com/stackra-co/ts-container/blob/main/CHANGELOG.md"
+                      "url": "https://github.com/stackra-inc/ts-container/blob/main/CHANGELOG.md"
                     },
                     {
                       "type": "button",
@@ -388,7 +388,7 @@ jobs:
                   "elements": [
                     {
                       "type": "mrkdwn",
-                      "text": "Triggered by *${{ github.actor }}* · Commit `${{ steps.notes.outputs.short_sha }}` · <https://github.com/stackra-co/ts-container/compare/${{ steps.notes.outputs.prev_tag }}...${{ needs.validate.outputs.tag }}|Compare changes>"
+                      "text": "Triggered by *${{ github.actor }}* · Commit `${{ steps.notes.outputs.short_sha }}` · <https://github.com/stackra-inc/ts-container/compare/${{ steps.notes.outputs.prev_tag }}...${{ needs.validate.outputs.tag }}|Compare changes>"
                     }
                   ]
                 }
@@ -401,17 +401,17 @@ jobs:
           (needs.publish.result == 'failure' || needs.release.result == 'failure')
         uses: slackapi/slack-github-action@v2
         with:
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook: ${{ secrets.STACKRA_SLACK_WEBHOOK_URL }}
           webhook-type: incoming-webhook
           payload: |
             {
-              "text": "❌ @stackra/ts-container ${{ needs.validate.outputs.tag }} publish FAILED",
+              "text": "❌ @stackra-inc/ts-container ${{ needs.validate.outputs.tag }} publish FAILED",
               "blocks": [
                 {
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "❌ Publish Failed: @stackra/ts-container ${{ needs.validate.outputs.tag }}",
+                    "text": "❌ Publish Failed: @stackra-inc/ts-container ${{ needs.validate.outputs.tag }}",
                     "emoji": true
                   }
                 },

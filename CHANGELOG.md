@@ -1,4 +1,15 @@
-# @stackra/ts-container
+# @stackra-inc/ts-container
+
+## 2.0.8 — 2026-04-20
+
+### Changed
+
+- 🏢 **Org rename** — migrated from `@stakraco` → `@stackra-inc` across package
+  name, repository URLs, README, examples, workflows, and steering docs
+- 🔧 **CI simplification** — streamlined CI workflow
+- 📝 **Steering & docs** — updated product, structure, and tech steering files
+
+---
 
 ## 2.0.7 — 2026-04-18
 
@@ -29,7 +40,7 @@
 
 ### Fixes
 
-- 🔗 **Fix GitHub org URL** — corrected `stackra-coco` → `stackra-co` in all
+- 🔗 **Fix GitHub org URL** — corrected `stackra-incco` → `stackra-inc` in all
   example READMEs and the publish workflow (release notes link, Slack
   notification link)
 - 📝 **Changelog wording** — minor copy fix in the v2.0.4 changelog entry
@@ -41,7 +52,7 @@
 ### Fixes
 
 - 🔗 **Correct repository URL** — `package.json` and `README.md` now point to
-  `github.com/stackra-co/ts-container` (was `stackra-co`); this was causing npm
+  `github.com/stackra-inc/ts-container` (was `stackra-inc`); this was causing npm
   provenance verification to fail on publish
 
 ---
@@ -103,9 +114,9 @@
 - `NestContainer` is renamed to `ModuleContainer`. Update any direct imports:
   ```typescript
   // Before
-  import { NestContainer } from '@stackra/ts-container';
+  import { NestContainer } from '@stackra-inc/ts-container';
   // After
-  import { ModuleContainer } from '@stackra/ts-container';
+  import { ModuleContainer } from '@stackra-inc/ts-container';
   ```
 
 ---
@@ -163,7 +174,7 @@ None. All changes are fully backward compatible.
 
 ### Major Features
 
-- 🎉 Initial release of @stackra/ts-container
+- 🎉 Initial release of @stackra-inc/ts-container
 - 💉 `@Injectable()` decorator with scope support (Singleton, Transient)
 - 🎯 `@Inject(token)` for explicit token-based constructor injection
 - ❓ `@Optional()` for optional dependency injection

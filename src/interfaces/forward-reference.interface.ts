@@ -19,7 +19,7 @@
  *
  * @example
  * ```typescript
- * import { forwardRef } from '@stackra/ts-container';
+ * import { forwardRef } from '@stackra-inc/ts-container';
  *
  * @Module({
  *   imports: [forwardRef(() => CatsModule)],

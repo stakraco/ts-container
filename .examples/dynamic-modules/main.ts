@@ -19,7 +19,7 @@ import {
   forwardRef,
   type DynamicModule,
   type OnModuleInit,
-} from '@stackra/ts-container';
+} from '@stackra-inc/ts-container';
 
 // ── Tokens ─────────────────────────────────────────────────────────────────
 

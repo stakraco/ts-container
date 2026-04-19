@@ -13,7 +13,7 @@
  * ## Usage:
  *
  * ```typescript
- * import { Application } from '@stackra/ts-container';
+ * import { Application } from '@stackra-inc/ts-container';
  *
  * const app = await Application.create(AppModule);
  * const userService = app.get(UserService);
@@ -32,7 +32,7 @@
  * ## With React:
  *
  * ```tsx
- * import { ContainerProvider } from '@stackra/ts-container/react';
+ * import { ContainerProvider } from '@stackra-inc/ts-container/react';
  *
  * const app = await Application.create(AppModule);
  *
@@ -63,7 +63,7 @@ import type { ApplicationOptions } from '@/interfaces/application-options.interf
  *
  * Implements `IApplication` (which extends `ContainerResolver`)
  * so it can be used directly with `<ContainerProvider context={app}>`
- * from `@stackra/ts-container/react`.
+ * from `@stackra-inc/ts-container/react`.
  *
  * @example
  * ```typescript

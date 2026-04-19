@@ -24,7 +24,7 @@ import {
   Injectable,
   ContainerProvider,
   useInject,
-} from '@stackra/ts-container';
+} from '@stackra-inc/ts-container';
 
 // ============================================================================
 // Services
@@ -166,7 +166,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 // Testing with Global Application
 // ============================================================================
 
-import { clearGlobalApplication, hasGlobalApplication } from '@stackra/ts-container';
+import { clearGlobalApplication, hasGlobalApplication } from '@stackra-inc/ts-container';
 
 describe('UserService', () => {
   beforeEach(async () => {

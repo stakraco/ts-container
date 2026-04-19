@@ -1,5 +1,5 @@
 /**
- * ESLint configuration for @stackra/ts-container
+ * ESLint configuration for @stackra-inc/ts-container
  *
  * Standalone flat config — does not extend the monorepo shared config
  * to avoid pulling in monorepo-only plugins (turbo, etc.) that are not

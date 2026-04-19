@@ -1,10 +1,10 @@
 <div align="center">
-  <img src="../../.github/assets/banner.svg" alt="@stackra/ts-container" width="100%" />
+  <img src="../../.github/assets/banner.svg" alt="@stackra-inc/ts-container" width="100%" />
 </div>
 
 <div align="center">
 
-[![npm version](https://img.shields.io/npm/v/@stackra/ts-container?style=flat-square&color=3178c6)](https://www.npmjs.com/package/@stackra/ts-container)
+[![npm version](https://img.shields.io/npm/v/@stackra-inc/ts-container?style=flat-square&color=3178c6)](https://www.npmjs.com/package/@stackra-inc/ts-container)
 [![License: MIT](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)](../../LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18%2B%20%7C%2019%2B-61dafb?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
@@ -34,7 +34,7 @@ This example is a conceptual React app. To run it, integrate the files into a
 React project (Vite, Next.js, CRA, etc.) with these dependencies:
 
 ```bash
-pnpm add react react-dom @stackra/ts-container reflect-metadata
+pnpm add react react-dom @stackra-inc/ts-container reflect-metadata
 ```
 
 Then use `main.tsx` as your entry point.
@@ -58,4 +58,4 @@ Then use `main.tsx` as your entry point.
 
 ## License
 
-MIT © [Stackra](https://github.com/stackra-co)
+MIT © [Stackra](https://github.com/stackra-inc)

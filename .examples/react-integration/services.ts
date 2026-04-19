@@ -14,7 +14,7 @@ import {
   type DynamicModule,
   type OnModuleInit,
   type OnModuleDestroy,
-} from '@stackra/ts-container';
+} from '@stackra-inc/ts-container';
 
 // ── Tokens ─────────────────────────────────────────────────────────────────
 

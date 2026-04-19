@@ -1,12 +1,12 @@
 <div align="center">
-  <img src=".github/assets/banner.svg" alt="@stackra/ts-container" width="100%" />
+  <img src=".github/assets/banner.svg" alt="@stackra-inc/ts-container" width="100%" />
 </div>
 
 <div align="center">
 
-[![npm version](https://img.shields.io/npm/v/@stackra/ts-container?style=flat-square&color=3178c6)](https://www.npmjs.com/package/@stackra/ts-container)
-[![npm downloads](https://img.shields.io/npm/dm/@stackra/ts-container?style=flat-square&color=3178c6)](https://www.npmjs.com/package/@stackra/ts-container)
-[![CI](https://img.shields.io/github/actions/workflow/status/stackra-co/ts-container/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/stackra-co/ts-container/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@stackra-inc/ts-container?style=flat-square&color=3178c6)](https://www.npmjs.com/package/@stackra-inc/ts-container)
+[![npm downloads](https://img.shields.io/npm/dm/@stackra-inc/ts-container?style=flat-square&color=3178c6)](https://www.npmjs.com/package/@stackra-inc/ts-container)
+[![CI](https://img.shields.io/github/actions/workflow/status/stackra-inc/ts-container/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/stackra-inc/ts-container/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![pnpm](https://img.shields.io/badge/pnpm-10.x-f69220?style=flat-square&logo=pnpm&logoColor=white)](https://pnpm.io/)
@@ -84,13 +84,13 @@ Built from scratch — no Inversify, no heavy runtime.
 
 ```bash
 # pnpm
-pnpm add @stackra/ts-container reflect-metadata
+pnpm add @stackra-inc/ts-container reflect-metadata
 
 # npm
-npm install @stackra/ts-container reflect-metadata
+npm install @stackra-inc/ts-container reflect-metadata
 
 # yarn
-yarn add @stackra/ts-container reflect-metadata
+yarn add @stackra-inc/ts-container reflect-metadata
 ```
 
 ---
@@ -119,7 +119,7 @@ import 'reflect-metadata';
 **3. Define services and a module**
 
 ```typescript
-import { Injectable, Inject, Module, Application } from '@stackra/ts-container';
+import { Injectable, Inject, Module, Application } from '@stackra-inc/ts-container';
 
 @Injectable()
 class LoggerService {
@@ -164,7 +164,7 @@ Marks a class as a DI-managed provider. Required on any class that needs
 dependencies injected or that will be injected into other classes.
 
 ```typescript
-import { Injectable, Scope } from '@stackra/ts-container';
+import { Injectable, Scope } from '@stackra-inc/ts-container';
 
 // Singleton (default) — one instance for the whole app
 @Injectable()
@@ -352,7 +352,7 @@ class AppModule {}
 ### Scopes
 
 ```typescript
-import { Injectable, Scope } from '@stackra/ts-container';
+import { Injectable, Scope } from '@stackra-inc/ts-container';
 
 // DEFAULT — singleton, one instance for the whole application
 @Injectable()
@@ -385,7 +385,7 @@ import {
   OnApplicationBootstrap,
   OnApplicationShutdown,
   BeforeApplicationShutdown,
-} from '@stackra/ts-container';
+} from '@stackra-inc/ts-container';
 
 @Injectable()
 class DatabaseService
@@ -448,7 +448,7 @@ class HttpServer implements BeforeApplicationShutdown, OnApplicationShutdown {
 
 ```typescript
 import 'reflect-metadata';
-import { Application } from '@stackra/ts-container';
+import { Application } from '@stackra-inc/ts-container';
 
 const app = await Application.create(AppModule);
 
@@ -544,7 +544,7 @@ available to all child components.
 ```tsx
 // main.tsx
 import 'reflect-metadata';
-import { Application, ContainerProvider } from '@stackra/ts-container';
+import { Application, ContainerProvider } from '@stackra-inc/ts-container';
 import ReactDOM from 'react-dom/client';
 
 // Option 1 — global app (recommended, no props needed)
@@ -571,7 +571,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 Resolve a provider from the container. Throws if not found. Result is memoized.
 
 ```tsx
-import { useInject } from '@stackra/ts-container';
+import { useInject } from '@stackra-inc/ts-container';
 
 function UserProfile({ userId }: { userId: string }) {
   const userService = useInject(UserService);
@@ -596,7 +596,7 @@ function CacheStatus() {
 Like `useInject` but returns `undefined` instead of throwing if not found.
 
 ```tsx
-import { useOptionalInject } from '@stackra/ts-container';
+import { useOptionalInject } from '@stackra-inc/ts-container';
 
 function AnalyticsWidget() {
   const tracker = useOptionalInject(AnalyticsService);
@@ -612,7 +612,7 @@ function AnalyticsWidget() {
 Access the raw `ContainerResolver` for advanced use cases.
 
 ```tsx
-import { useContainer } from '@stackra/ts-container';
+import { useContainer } from '@stackra-inc/ts-container';
 
 function DebugPanel() {
   const container = useContainer();
@@ -635,7 +635,7 @@ function DebugPanel() {
 Use `forwardRef()` when two modules import each other:
 
 ```typescript
-import { forwardRef } from '@stackra/ts-container';
+import { forwardRef } from '@stackra-inc/ts-container';
 
 // cats.module.ts
 @Module({
@@ -863,4 +863,4 @@ class OrderService {
 
 ## License
 
-MIT © [Stackra](https://github.com/stackra-co)
+MIT © [Stackra](https://github.com/stackra-inc)
