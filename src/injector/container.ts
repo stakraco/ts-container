@@ -103,7 +103,33 @@ export class ModuleContainer {
 
     // Check if already registered
     if (this.modules.has(token)) {
-      return { moduleRef: this.modules.get(token)!, inserted: false };
+      const existingModule = this.modules.get(token)!;
+
+      // If this is a dynamic module with new providers/exports (e.g. forFeature()),
+      // merge them into the existing module's dynamic metadata.
+      // This handles the pattern where forRoot() and forFeature() both return
+      // DynamicModules with the same module class.
+      if (dynamicMetadata) {
+        const existing = this.dynamicModulesMetadata.get(token);
+        if (existing) {
+          // Merge providers
+          if (dynamicMetadata.providers) {
+            existing.providers = [...(existing.providers ?? []), ...dynamicMetadata.providers];
+          }
+          // Merge exports
+          if (dynamicMetadata.exports) {
+            existing.exports = [...(existing.exports ?? []), ...dynamicMetadata.exports];
+          }
+          // Merge imports
+          if (dynamicMetadata.imports) {
+            existing.imports = [...(existing.imports ?? []), ...dynamicMetadata.imports];
+          }
+        } else {
+          this.dynamicModulesMetadata.set(token, dynamicMetadata);
+        }
+      }
+
+      return { moduleRef: existingModule, inserted: false };
     }
 
     // Create and register the module

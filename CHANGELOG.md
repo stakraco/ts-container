@@ -1,5 +1,17 @@
 # @stackra/ts-container
 
+## 2.0.15 — 2026-05-02
+
+### Fixed
+
+- 🐛 **DynamicModule provider merging** — when multiple `DynamicModule`s share
+  the same module class (e.g. `ORMModule.forRoot()` + `ORMModule.forFeature()`),
+  the container now **merges** providers, exports, and imports from subsequent
+  registrations instead of silently dropping them. Previously, the second
+  `addModule()` call returned early without adding the new DynamicModule's
+  providers, causing `forFeature()` repository providers to be missing at
+  resolution time.
+
 ## 2.0.14 — 2026-04-30
 
 ### Fixed
